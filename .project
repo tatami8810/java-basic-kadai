@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>継承を使って自分と家族を紹介しよう</name>
+=======
+	<name>辞書アプリを作ろう</name>
+>>>>>>> 92a6290 (課題の提出)
 	<comment></comment>
 	<projects>
 	</projects>

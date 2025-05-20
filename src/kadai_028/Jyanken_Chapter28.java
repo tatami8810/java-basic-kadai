@@ -1,7 +1,6 @@
 package kadai_028;
 
 import java.util.HashMap;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Jyanken_Chapter28 {
@@ -17,28 +16,32 @@ public class Jyanken_Chapter28 {
 
     public String getMyChoice() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("自分のじゃんけんの手を入力しましょう");
-        System.out.println("グーはrockのrを入力しましょう");
-        System.out.println("チョキはscissorsのsを入力しましょう");
-        System.out.println("パーはpaperのpを入力しましょう");
+        String choice;
+        while (true) {
+            System.out.println("自分のじゃんけんの手を入力しましょう");
+            System.out.println("グーはrockのrを入力しましょう");
+            System.out.println("チョキはscissorsのsを入力しましょう");
+            System.out.println("パーはpaperのpを入力しましょう");
 
-        String choice = scanner.nextLine().toLowerCase();
-        return handMap.containsKey(choice) ? choice : null;
+            choice = scanner.nextLine().toLowerCase();
+            if (handMap.containsKey(choice)) {
+                break; // 有効な入力の場合、ループを抜ける
+            } else {
+                System.out.println("無効な入力です。もう一度入力してください！");
+            }
+        }
+        return choice;
     }
 
     public String getRandom() {
+        // Math.random()とMath.floor()を活用して乱数を生成
+        int randomIndex = (int) Math.floor(Math.random() * 3); // 0から2の整数を生成
         String[] choices = {"r", "s", "p"};
-        Random random = new Random();
-        return choices[random.nextInt(choices.length)];
+        return choices[randomIndex];
     }
 
     public void playGame() {
         String myChoice = getMyChoice();
-        if (myChoice == null) {
-            System.out.println("無効な入力です。正しい手を選択してください！");
-            return;
-        }
-
         String opponentChoice = getRandom();
 
         String myHand = handMap.get(myChoice);
